@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang = "en">
+
+
+ <head>
+     <title>AudioEmber</title>
+     <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+     <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+ </head>  
+
+<body>
+    
+
+
+
+
+<div class = "container">
+	<div class="header">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li role="presentation" ><a href="/artist">Artist</a>
+                    </li> 
+                    <li role="presentation"><a href="/">Home</a>
+                    </li>
+					<li role="presentation"><a href="{{url_for('list_all', Page = 1)}}">Top Songs of All Time</a>
+                    </li>
+					<li role="presentation"><a href="{{url_for('list_all_artist', Page = 1)}}">Top Artist of All Time</a>
+                    </li>
+                </ul>
+            </nav>
+            <h3 class="text-muted">Audio Ember</h3>
+        </div>
+
+		<div class="jumbotron" align ="left">
+				<ol start = {{lower + 1}}>
+              {% for i in p_list_genre[lower:upper] %}
+			  <li><a href = "{{url_for('graph_song_selected', Song = (i[3]))}}" align = "left">{{i[0]}} by {{i[1]}} with  {{i[2]}} points</a></li>
+              {% endfor %}
+            </ol>
+        </div>
+	<ul class = "pagination">
+		{%if Length > 450 %}
+		{%if (Page ==1) %}
+					<li class = "active"><a href="{{url_for('list_Genre', Genre = Genre, Page = 1)}}">1</a></li>
+					<li><a href="{{url_for('list_Genre', Genre = Genre, Page = 2)}}">2</a></li>
+					<li><a href="{{url_for('list_Genre', Genre = Genre, Page = 3)}}">3</a></li>
+					<li><a href="{{url_for('list_Genre', Genre = Genre, Page = 4)}}">4</a></li>
+					<li><a href="{{url_for('list_Genre', Genre = Genre, Page = 5)}}">5</a></li>
+					<li><a href="{{url_for('list_Genre', Genre = Genre, Page = 6)}}">6</a></li>
+					<li><a href="{{url_for('list_Genre', Genre = Genre, Page = 7)}}">7</a></li>
+					<li><a href="{{url_for('list_Genre', Genre = Genre, Page = 8)}}">8</a></li>
+					<li><a href="{{url_for('list_Genre', Genre = Genre, Page = 9)}}">9</a></li>
+					<li><a href="{{url_for('list_Genre', Genre = Genre, Page = MaxP)}}">&gt&gt</a></li>
+		{%elif (Page ==2) %}
+					<li ><a href="{{url_for('list_Genre', Genre = Genre, Page = 1)}}">&lt&lt</a></li>
+					<li><a href="{{url_for('list_Genre', Genre = Genre, Page = 1)}}">1</a></li>
+					<li class = "active"><a href="{{url_for('list_Genre', Genre = Genre, Page = 2)}}">2</a></li>
+					<li><a href="{{url_for('list_Genre', Genre = Genre, Page = 3)}}">3</a></li>
+					<li><a href="{{url_for('list_Genre', Genre = Genre, Page = 4)}}">4</a></li>
+					<li><a href="{{url_for('list_Genre', Genre = Genre, Page = 5)}}">5</a></li>
+					<li><a href="{{url_for('list_Genre', Genre = Genre, Page = 6)}}">6</a></li>
+					<li><a href="{{url_for('list_Genre', Genre = Genre, Page = 7)}}">7</a></li>
+					<li><a href="{{url_for('list_Genre', Genre = Genre, Page = 8)}}">8</a></li>
+					<li><a href="{{url_for('list_Genre', Genre = Genre, Page = 9)}}">9</a></li>
+					<li><a href="{{url_for('list_Genre', Genre = Genre, Page = MaxP)}}">&gt&gt</a></li>
+		{%elif (Page ==3) %}
+					<li ><a href="{{url_for('list_Genre', Genre = Genre, Page = 1)}}">&lt&lt</a></li>
+					<li><a href="{{url_for('list_Genre', Genre = Genre, Page = 1)}}">1</a></li>
+					<li><a href="{{url_for('list_Genre', Genre = Genre, Page = 2)}}">2</a></li>
+					<li class = "active"><a href="{{url_for('list_Genre', Genre = Genre, Page = 3)}}">3</a></li>
+					<li><a href="{{url_for('list_Genre', Genre = Genre, Page = 4)}}">4</a></li>
+					<li><a href="{{url_for('list_Genre', Genre = Genre, Page = 5)}}">5</a></li>
+					<li><a href="{{url_for('list_Genre', Genre = Genre, Page = 6)}}">6</a></li>
+					<li><a href="{{url_for('list_Genre', Genre = Genre, Page = 7)}}">7</a></li>
+					<li><a href="{{url_for('list_Genre', Genre = Genre, Page = 8)}}">8</a></li>
+					<li><a href="{{url_for('list_Genre', Genre = Genre, Page = 9)}}">9</a></li>
+					<li><a href="{{url_for('list_Genre', Genre = Genre, Page =MaxP)}}">&gt&gt</a></li>
+		{%elif (Page ==4) %}
+					<li ><a href="{{url_for('list_Genre', Genre = Genre, Page = 1)}}">&lt&lt</a></li>
+					<li><a href="{{url_for('list_Genre', Genre = Genre, Page = 1)}}">1</a></li>
+					<li><a href="{{url_for('list_Genre', Genre = Genre, Page = 2)}}">2</a></li>
+					<li><a href="{{url_for('list_Genre', Genre = Genre, Page = 3)}}">3</a></li>
+					<li class = "active"><a href="{{url_for('list_Genre', Genre = Genre, Page = 4)}}">4</a></li>
+					<li><a href="{{url_for('list_Genre', Genre = Genre, Page = 5)}}">5</a></li>
+					<li><a href="{{url_for('list_Genre', Genre = Genre, Page = 6)}}">6</a></li>
+					<li><a href="{{url_for('list_Genre', Genre = Genre, Page = 7)}}">7</a></li>
+					<li><a href="{{url_for('list_Genre', Genre = Genre, Page = 8)}}">8</a></li>
+					<li><a href="{{url_for('list_Genre', Genre = Genre, Page = 9)}}">9</a></li>
+					<li><a href="{{url_for('list_Genre', Genre = Genre, Page = MaxP)}}">&gt&gt</a></li>
+		{%elif (Page ==5) %}
+					<li ><a href="{{url_for('list_Genre', Genre = Genre, Page = 1)}}">&lt&lt</a></li>
+					<li><a href="{{url_for('list_Genre', Genre = Genre, Page = 1)}}">1</a></li>
+					<li><a href="{{url_for('list_Genre', Genre = Genre, Page = 2)}}">2</a></li>
+					<li><a href="{{url_for('list_Genre', Genre = Genre, Page = 3)}}">3</a></li>
+					<li><a href="{{url_for('list_Genre', Genre = Genre, Page = 4)}}">4</a></li>
+					<li class = "active"><a href="{{url_for('list_Genre', Genre = Genre, Page = 5)}}">5</a></li>
+					<li><a href="{{url_for('list_Genre', Genre = Genre, Page = 6)}}">6</a></li>
+					<li><a href="{{url_for('list_Genre', Genre = Genre, Page = 7)}}">7</a></li>
+					<li><a href="{{url_for('list_Genre', Genre = Genre, Page = 8)}}">8</a></li>
+					<li><a href="{{url_for('list_Genre', Genre = Genre, Page = 9)}}">9</a></li>
+					<li><a href="{{url_for('list_Genre', Genre = Genre, Page = MaxP)}}">&gt&gt</a></li>
+					{%elif (Page >=6) and  upper +151 < Length %}
+					<li ><a href="{{url_for('list_Genre', Genre = Genre, Page = 1)}}">&lt&lt</a></li>
+		
+				   <li><a href="{{url_for('list_Genre', Genre = Genre, Page = Page-4)}}">{{Page-4}}</a></li>
+				   <li><a href="{{url_for('list_Genre', Genre = Genre, Page = Page-3)}}">{{Page-3}}</a></li>
+				   <li><a href="{{url_for('list_Genre', Genre = Genre, Page = Page-2)}}">{{Page-2}}</a></li>
+				   <li><a href="{{url_for('list_Genre', Genre = Genre, Page = Page-1)}}">{{Page-1}}</a></li>
+				   <li class = "active"><a href="{{url_for('list_Genre', Genre = Genre, Page = Page)}}">{{Page}}</a></li>
+				   <li><a href="{{url_for('list_Genre', Genre = Genre, Page = Page+1)}}">{{Page+1}}</a></li>
+				   <li><a href="{{url_for('list_Genre', Genre = Genre, Page = Page+2)}}">{{Page+2}}</a></li>
+				   <li><a href="{{url_for('list_Genre', Genre = Genre, Page = Page+3)}}">{{Page+3}}</a></li>
+				   <li><a href="{{url_for('list_Genre', Genre = Genre, Page = Page+4)}}">{{Page+4}}</a></li>	
+					<li><a href="{{url_for('list_Genre', Genre = Genre, Page = MaxP)}}">&gt&gt</a></li>
+				   {%elif (Page >=6) and  upper +101 < Length %}
+					<li ><a href="{{url_for('list_Genre', Genre = Genre, Page = 1)}}">&lt&lt</a></li>
+		
+				   <li><a href="{{url_for('list_Genre', Genre = Genre, Page = Page-5)}}">{{Page-5}}</a></li>		
+				   <li><a href="{{url_for('list_Genre', Genre = Genre, Page = Page-4)}}">{{Page-4}}</a></li>
+				   <li><a href="{{url_for('list_Genre', Genre = Genre, Page = Page-3)}}">{{Page-3}}</a></li>
+				   <li><a href="{{url_for('list_Genre', Genre = Genre, Page = Page-2)}}">{{Page-2}}</a></li>
+				   <li><a href="{{url_for('list_Genre', Genre = Genre, Page = Page-1)}}">{{Page-1}}</a></li>
+				   <li class = "active"><a href="{{url_for('list_Genre', Genre = Genre, Page = Page)}}">{{Page}}</a></li>
+				   <li><a href="{{url_for('list_Genre', Genre = Genre, Page = Page+1)}}">{{Page+1}}</a></li>
+				   <li><a href="{{url_for('list_Genre', Genre = Genre, Page = Page+2)}}">{{Page+2}}</a></li>
+				   <li><a href="{{url_for('list_Genre', Genre = Genre, Page = Page+3)}}">{{Page+3}}</a></li>
+					<li><a href="{{url_for('list_Genre', Genre = Genre, Page =MaxP )}}">&gt&gt</a></li>
+				   {%elif (Page >=6) and upper +51 < Length %}
+					<li ><a href="{{url_for('list_Genre', Genre = Genre, Page = 1)}}">&lt&lt</a></li>
+		
+				   <li><a href="{{url_for('list_Genre', Genre = Genre, Page = Page-6)}}">{{Page-6}}</a></li>
+				   <li><a href="{{url_for('list_Genre', Genre = Genre, Page = Page-5)}}">{{Page-5}}</a></li>		
+				   <li><a href="{{url_for('list_Genre', Genre = Genre, Page = Page-4)}}">{{Page-4}}</a></li>
+				   <li><a href="{{url_for('list_Genre', Genre = Genre, Page = Page-3)}}">{{Page-3}}</a></li>
+				   <li><a href="{{url_for('list_Genre', Genre = Genre, Page = Page-2)}}">{{Page-2}}</a></li>
+				   <li><a href="{{url_for('list_Genre', Genre = Genre, Page = Page-1)}}">{{Page-1}}</a></li>
+				   <li class = "active"><a href="{{url_for('list_Genre', Genre = Genre, Page = Page)}}">{{Page}}</a></li>
+				   <li><a href="{{url_for('list_Genre', Genre = Genre, Page = Page+1)}}">{{Page+1}}</a></li>
+				   <li><a href="{{url_for('list_Genre', Genre = Genre, Page = Page+2)}}">{{Page+2}}</a></li>
+					<li><a href="{{url_for('list_Genre', Genre = Genre, Page =MaxP )}}">&gt&gt</a></li>
+				   {%elif (Page >=6) and upper +1 < Length %}
+					<li ><a href="{{url_for('list_Genre', Genre = Genre, Page = 1)}}">&lt&lt</a></li>
+		
+				   <li><a href="{{url_for('list_Genre', Genre = Genre, Page = Page-7)}}">{{Page-7}}</a></li>
+				   <li><a href="{{url_for('list_Genre', Genre = Genre, Page = Page-6)}}">{{Page-6}}</a></li>
+				   <li><a href="{{url_for('list_Genre', Genre = Genre, Page = Page-5)}}">{{Page-5}}</a></li>		
+				   <li><a href="{{url_for('list_Genre', Genre = Genre, Page = Page-4)}}">{{Page-4}}</a></li>
+				   <li><a href="{{url_for('list_Genre', Genre = Genre, Page = Page-3)}}">{{Page-3}}</a></li>
+				   <li><a href="{{url_for('list_Genre', Genre = Genre, Page = Page-2)}}">{{Page-2}}</a></li>
+				   <li><a href="{{url_for('list_Genre', Genre = Genre, Page = Page-1)}}">{{Page-1}}</a></li>
+				   <li class = "active"><a href="{{url_for('list_Genre', Genre = Genre, Page = Page)}}">{{Page}}</a></li>
+				   <li><a href="{{url_for('list_Genre', Genre = Genre, Page = Page+1)}}">{{Page+1}}</a></li>
+					<li><a href="{{url_for('list_Genre', Genre = Genre, Page =MaxP )}}">&gt&gt</a></li>
+				   {%elif (Page >=6) and lower < Length%}
+					<li ><a href="{{url_for('list_Genre', Genre = Genre, Page = 1)}}">&lt&lt</a></li>
+				   <li><a href="{{url_for('list_Genre', Genre = Genre, Page = Page-8)}}">{{Page-8}}</a></li>
+				   <li><a href="{{url_for('list_Genre', Genre = Genre, Page = Page-7)}}">{{Page-7}}</a></li>
+				   <li><a href="{{url_for('list_Genre', Genre = Genre, Page = Page-6)}}">{{Page-6}}</a></li>
+				   <li><a href="{{url_for('list_Genre', Genre = Genre, Page = Page-5)}}">{{Page-5}}</a></li>		
+				   <li><a href="{{url_for('list_Genre', Genre = Genre, Page = Page-4)}}">{{Page-4}}</a></li>
+				   <li><a href="{{url_for('list_Genre', Genre = Genre, Page = Page-3)}}">{{Page-3}}</a></li>
+				   <li><a href="{{url_for('list_Genre', Genre = Genre, Page = Page-2)}}">{{Page-2}}</a></li>
+				   <li><a href="{{url_for('list_Genre', Genre = Genre, Page = Page-1)}}">{{Page-1}}</a></li>
+				   <li class = "active"><a href="{{url_for('list_Genre', Genre = Genre, Page = Page)}}">{{Page}}</a></li>
+
+		{%endif%}
+		{% endif%} <!--end if for if Length >450 #-->
+		{%if Length <451 and Length >400%}
+		{%for i in range(1,10)%}
+		<li {%if Page == i%}class = "active"{%endif%}><a href="{{url_for('list_Genre', Genre = Genre, Page = i)}}">{{i}}</a></li>
+		{%endfor%}
+		
+		{%elif Length <401 and Length >350%}
+		{%for i in range(1,9)%}
+		<li {%if Page == i%}class = "active"{%endif%}><a href="{{url_for('list_Genre', Genre = Genre, Page = i)}}">{{i}}</a></li>
+		{%endfor%}
+		
+		{%elif Length <351 and Length >300%}
+		{%for i in range(1,8)%}
+		<li {%if Page == i%}class = "active"{%endif%}><a href="{{url_for('list_Genre', Genre = Genre, Page = i)}}">{{i}}</a></li>
+		{%endfor%}
+		
+		{%elif Length <301 and Length >250%}
+		{%for i in range(1,7)%}
+		<li {%if Page == i%}class = "active"{%endif%}><a href="{{url_for('list_Genre', Genre = Genre, Page = i)}}">{{i}}</a></li>
+		{%endfor%}
+
+		{%elif Length <251 and Length >200%}
+		{%for i in range(1,6)%}
+		<li {%if Page == i%}class = "active"{%endif%}><a href="{{url_for('list_Genre', Genre = Genre, Page = i)}}">{{i}}</a></li>
+		{%endfor%}
+
+		{%elif Length <201 and Length >150%}
+		{%for i in range(1,5)%}
+		<li {%if Page == i%}class = "active"{%endif%}><a href="{{url_for('list_Genre', Genre = Genre, Page = i)}}">{{i}}</a></li>
+		{%endfor%}
+
+		{%elif Length <151 and Length >100%}
+		{%for i in range(1,4)%}
+		<li {%if Page == i%}class = "active"{%endif%}><a href="{{url_for('list_Genre', Genre = Genre, Page = i)}}">{{i}}</a></li>
+		{%endfor%}
+
+		{%elif Length <101 and Length >50%}
+		{%for i in range(1,3)%}
+		<li {%if Page == i%}class = "active"{%endif%}><a href="{{url_for('list_Genre', Genre = Genre, Page = i)}}">{{i}}</a></li>
+		{%endfor%}
+
+		{%endif%}
+	</ul>
+		
+
+<div class="row marketing">
+            <div class="col-lg-6">
+                <h4>About Audio Ember</h4>
+                <p>Audio Ember is currently under development, all data is from Billboard charts from 2011-2016. The following links lead to the developers github pages: </p>
+		<p><a href = https://github.com/labratjazzcat> Labratjazzcat </a>
+		<br>
+		<a href = https://github.com/Maw1395> Maw1395 </a></p>
+		<p>To contact email <a>audioember@outlook.com</a></p>
+ 
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>&copy; Audio Ember 2016</p>
+        </footer>
+ 
+    </div>
+
+
+  
+</body>
+                

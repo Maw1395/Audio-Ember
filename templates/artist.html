@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <title>AudioEmber</title>
+ 
+ 
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+ 
+    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+ 
+ 
+</head>
+ 
+<body>
+ 
+     <div class = "container">
+	<div class="header">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li role="presentation" ><a href="/">Song</a>
+                    </li> 
+                    <li role="presentation" class="active"><a href="/">Home</a>
+                    </li>
+                    <li role="presentation"><a href="{{url_for('list_all', Page = 1)}}">Top Songs of All Time</a>
+                    </li>
+                    <li role="presentation"><a href="{{url_for('list_all_artist', Page = 1)}}">Top Artists of All Time</a>
+                    </li>
+                </ul>
+            </nav>
+            <h3 class="text-muted">Audio Ember</h3>
+        </div>
+ 
+        <div class="jumbotron">
+            <h1>Search an Artist:</h1>
+<br>
+            <p class="lead"></p>
+ 	    <form class="form" method = 'POST' action ="/artist">
+	    <input type="text" name="input_artist" id="input_artist" class="form-control" placeholder="Artist name" required autofocus>
+		<br><input type = "submit" class="btn btn-lg btn-success" value= "Search!"> 
+	</form>
+		  <h2> Or Click Below! </h2>
+	<br>
+	<table>
+	<tr>
+	<td> <a href = "{{url_for('list_Genre', Genre = 'hot-100', Page  = 1)}}">Top Hot-100 Songs</a> </td>
+	<td> <a href = "{{url_for('list_Genre',Genre = 'country', Page  = 1)}}">Top Country Songs</a>  </td>
+	<td> <a href = "{{url_for('list_Genre',Genre = 'pop', Page  = 1)}}">Top Pop Songs</a> </td>
+	<td> <a href = "{{url_for('list_Genre',Genre = 'rock', Page  = 1)}}">Top Rock Songs</a> </td>
+	<td> <a href = "{{url_for('list_Genre',Genre = 'rb', Page  = 1)}}">Top R&B/HipHop Songs</a> </td>
+	<td> <a href = "{{url_for('list_Genre',Genre = 'edm', Page  = 1)}}">Top EDM Songs</a></td>
+	</tr>
+	</table><br>
+	<table>
+  <tr>
+  <td> <a href = "{{url_for('list_artist_selected', Artist = (artist_1))}}">| - - - #1 Artist - - -</a> </td>
+  <td> <a href = "{{url_for('list_artist_selected', Artist = artist_2)}}">| - - - #2 Artist - - -</a> </td>
+  <td> <a href = "{{url_for('list_artist_selected', Artist = artist_3)}}">| - - - #3 Artist - - -</a> </td>
+  <td> <a href = "{{url_for('list_artist_selected', Artist = artist_4)}}">| - - - #4 Artist - - -</a> </td>
+  <td> <a href = "{{url_for('list_artist_selected', Artist = artist_5)}}">| - - - #5 Artist - - - |</a> </td>
+  </tr>
+	</table><br>
+{{t5|safe}}
+<br>
+		</div>
+ 
+<div class="row marketing">
+            <div class="col-lg-6">
+                <h4>About Audio Ember</h4>
+                <p>Audio Ember is currently under development, all data is from Billboard charts from 2011-2016. Scores are calculated each week by adding the 101-x where x is the songs rank on the chart (number 1 on chart: 101 - 1 = 100 points earned). The following links lead to the developers github pages: </p>
+		<p><a href = https://github.com/labratjazzcat> Labratjazzcat </a>
+		<br>
+		<a href = https://github.com/Maw1395> Maw1395 </a></p>
+		<p>To contact email <a>audioember@outlook.com</a></p>
+ 
+            </div>
+        </div>
+ 
+        <footer class="footer">
+            <p>&copy; Audio Ember 2016</p>
+        </footer>
+ 
+	</div><!--end conatiner div-->
+</body>
+ 
+</html>
+

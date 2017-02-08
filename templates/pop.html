@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang = "en">
+
+
+ <head>
+     <title>AudioEmber</title>
+     <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+     <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+ </head>  
+
+<body>
+    
+
+
+
+
+ <div class = "container">
+	<div class="header">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li role="presentation" ><a href="artist">Artist</a>
+                    </li> 
+                    <li role="presentation"><a href="/">Home</a>
+                    </li>
+                    <li role="presentation"><a href="list">Top 50 Songs of All Time</a>
+                    </li>
+                    <li role="presentation"><a href="list_a">Top 50 Artist of All Time</a>
+                    </li>
+                </ul>
+            </nav>
+            <h3 class="text-muted">Audio Ember</h3>
+        </div>
+ 
+        <div class="jumbotron">
+            <ol>
+            {% block content %}
+              {% for i in p_list_pop %}
+              <li><a href = "{{url_for('graph_song_selected', Song = (i[3]))}}">{{i[0]}} by {{i[1]}} with  {{i[2]}} points</a></li>
+              {% endfor %}
+            {% endblock %}
+            </ol>
+        </div>
+ 
+<div class="row marketing">
+            <div class="col-lg-6">
+                <h4>About Audio Ember</h4>
+                <p>Audio Ember is currently under development, all data is from Billboard charts from 2011-2016. The following links lead to the developers github pages: </p>
+		<p><a href = https://github.com/labratjazzcat> Labratjazzcat </a>
+		<br>
+		<a href = https://github.com/Maw1395> Maw1395 </a></p>
+		<p>To contact email <a>audioember@outlook.com</a></p>
+ 
+            </div>
+        </div>
+ 
+        <footer class="footer">
+            <p>&copy; Audio Ember 2016</p>
+        </footer>
+ 
+    </div>
+
+
+  
+</body>
+                

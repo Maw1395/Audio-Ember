@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang = "en">
+
+
+ <head>
+     <title>AudioEmber</title>
+     <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+     <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+ </head>  
+
+<body>
+    
+
+
+
+ <div class = "container">
+	<div class="header">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li role="presentation" ><a href="/artist">Artist</a>
+                    </li> 
+                    <li role="presentation"><a href="/">Home</a>
+                    </li>
+					<li role="presentation"><a href="{{url_for('list_all', Page = 1)}}">Top 50 Songs of All Time</a>
+                    </li>
+					<li role="presentation"><a href="{{url_for('list_all_artist', Page = 1)}}">Top 50 Artist of All Time</a>
+                    </li>
+                </ul>
+            </nav>
+            <h3 class="text-muted">Audio Ember</h3>
+        </div>
+		<h3>{{Title}} By {{Artist}}</h3>
+        <div class="jumbotron">
+				<iframe width = "560" height ="315" src = "{{URL}}" frameborder="0" allowfullscreen></iframe>
+				<br><br>
+				{% for i in B  %}
+				{{i|safe}}<br><br>
+                {% endfor  %}
+				<br><br>
+		</div>
+		 
+        <div class="row marketing">
+            <div class="col-lg-6">
+                <h4>About Audio Ember</h4>
+                <p>Audio Ember is currently under development, all data is from Billboard charts from 2011-2016.</p>
+ 
+            </div>
+        </div>
+ 
+        <footer class="footer">
+            <p>&copy; Audio Ember 2016</p>
+        </footer>
+ 
+    </div>
+	<script>
+		var OAUTH2_CLIENT_ID = '__YOUR_CLIENT_ID__';
+		var OAUTH2_SCOPES = [
+		'https://www.googleapis.com/auth/youtube'
+		 ];
+		googleApiClientReady = function() {
+ 		 gapi.auth.init(function() {
+    		window.setTimeout(checkAuth, 1);
+  		});
+		}
+		function checkAuth() {
+		  gapi.auth.authorize({
+    		client_id: OAUTH2_CLIENT_ID,
+    		scope: OAUTH2_SCOPES,
+    		immediate: true
+  		}, handleAuthResult);
+		}
+		// Handle the result of a gapi.auth.authorize() call.
+		function handleAuthResult(authResult) {
+		  if (authResult && !authResult.error) {
+			// Authorization was successful. Hide authorization prompts and show
+			// content that should be visible after authorization succeeds.
+			$('.pre-auth').hide();
+			$('.post-auth').show();
+			loadAPIClientInterfaces();
+		  } else {
+			// Make the #login-link clickable. Attempt a non-immediate OAuth 2.0
+			// client flow. The current function is called when that flow completes.
+			$('#login-link').click(function() {
+			  gapi.auth.authorize({
+				client_id: OAUTH2_CLIENT_ID,
+				scope: OAUTH2_SCOPES,
+				immediate: false
+				}, handleAuthResult);
+			});
+		  }
+		}
+
+		// Load the client interfaces for the YouTube Analytics and Data APIs, which
+		// are required to use the Google APIs JS client. More info is available at
+		// https://developers.google.com/api-client-library/javascript/dev/dev_jscript#loading-the-client-library-and-the-api
+		function loadAPIClientInterfaces() {
+		  gapi.client.load('youtube', 'v3', function() {
+			handleAPILoaded();
+		  });
+		}		
+</scrpit>
+  
+</body>
+                

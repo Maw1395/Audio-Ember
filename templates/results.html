@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang = "en">
+
+
+ <head>
+     <title>AudioEmber</title>
+     <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+     <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+ </head>  
+
+<body>
+    
+
+
+
+
+ <div class = "container">
+	<div class="header">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li role="presentation" ><a href="/artist">Artist</a>
+                    </li> 
+                    <li role="presentation"><a href="/">Home</a>
+                    </li>
+					<li role="presentation"><a href="{{url_for('list_all', Page = 1)}}">Top Songs of All Time</a>
+                    </li>
+					<li role="presentation"><a href="{{url_fro('list_all_artist', Page = 1)}}">Top Artist of All Time</a>
+                    </li>
+                </ul>
+            </nav>
+            <h3 class="text-muted">Audio Ember</h3>
+        </div>
+		<h3>{{song}} </h3>
+        <div class="jumbotron">
+          <ol>
+            {% block content %}
+              {% for i in user_query %}
+                  {% set index = index + 1 %}
+				  <li><a href = "{{url_for('graph_song_selected', Song =(i.songs.SongID))}}"> {{i.songs.Title}} by {{i.songs.Artist}} with {{i.points.Points}} points </a></li>
+              {% endfor %}
+            {% endblock %}
+          </ol>
+        </div>
+ 
+        <div class="row marketing">
+            <div class="col-lg-6">
+                <h4>About Audio Ember</h4>
+                <p>Audio Ember is currently under development, all data is from Billboard charts from 2011-2016.</p>
+ 
+            </div>
+        </div>
+ 
+        <footer class="footer">
+            <p>&copy; Audio Ember 2016</p>
+        </footer>
+ 
+    </div>
+
+
+  
+</body>
+                
