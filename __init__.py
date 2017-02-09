@@ -5,15 +5,16 @@ from songpoints import songpoints
 from totalpoints import totalpoints
 from youtube import youtube_search
 import songlist
+from artistpoints import artistpoints
 from sqlalchemy import func
 import plotly.tools as tls
 #import dbupdate
 #import top5artist_graph
-
+from mylog import log
 app = Flask(__name__)
 
-
 @app.route("/artist", methods=['GET'])
+@log("log.txt")
 def hello_artist():
     """ Home Page Server Side Artist Search """
     t = db.session.query(models.graphs).filter(models.graphs.SongID == -5).first()
@@ -28,8 +29,8 @@ def hello_artist():
                            t5=tls.get_embed(t.URL)
                           )
 
-
 @app.route('/artist', methods=['POST'])
+@log("log.txt")
 def hello_post():
     """ Home Page Server Side Artist Search """
     if request.form['input_artist']:
@@ -41,8 +42,8 @@ def hello_post():
             points=totalpoints(Asearch)
             )
 
-
 @app.route("/")
+@log("log.txt")
 def home_page():
     """ Home Page Song Search """
     t = db.session.query(models.graphs).filter(models.graphs.SongID == -4).first()
@@ -58,8 +59,8 @@ def home_page():
         t4=tls.get_embed(t.URL)
         )
 
-
 @app.route("/", methods=['GET', 'POST'])
+@log("log.txt")
 def hello_home():
     """ Home Page Song Search """
     if request.form['inputName']:
@@ -71,8 +72,8 @@ def hello_home():
             song=search
             )
 
-
 @app.route('/', methods=['POST'])
+@log("log.txt")
 def hello_post2():
     """ Render search results """
     if request.form['inputName']:
@@ -83,39 +84,40 @@ def hello_post2():
             user_query=songpoints(search)
             )
 
-
 @app.route('/list/<Page>')
+@log("log.txt")
 def list_all(Page):
     """ List top songs """
-    max_l = len(top20list.points_todos)
+    max_l = 133*50
     return render_template(
         'list.html',
         p_list=top20list.points_todos,
-        lower=(int(Page)-1)*50,
-        upper=(int(Page)*50),
-        Page=int(Page),
+        lower=int((float(Page)-1)*50),
+        upper=int(float(Page)*50),
+        Page=int(float(Page)),
         Length=len(top20list.points_todos),
         MaxP=max_l/50+1
         )
 
-
 @app.route('/list_a/<Page>')
+@log("log.txt")
 def list_all_artist(Page):
     """ List top artist """
-    max_l = len(db.session.query(models.artist_points).order_by(models.artist_points.Points.desc()).all())
+    max_l = 65 * 50 
     return render_template(
         'list_a.html',
         index=0,
         p_list_a=db.session.query(models.artist_points).order_by(models.artist_points.Points.desc()).all(),
-        lower=(int(Page)-1)*50,
-        upper=(int(Page)*50),
-        Page=int(Page),
+        lower=int((float(Page)-1)*50),
+        upper=int(float(Page)*50),
+        Page=int(float(Page)),
         Length=len(db.session.query(models.artist_points).order_by(models.artist_points.Points.desc()).all()),
         MaxP=max_l/50+1
         )
 
 
 @app.route('/<Genre>/<Page>')
+@log("log.txt")
 def list_genre(Genre, Page):
     """ List top songs by genre """
     max_l = len(songlist.songlist(Genre))
@@ -132,6 +134,7 @@ def list_genre(Genre, Page):
 
 
 @app.route('/electronic/<Page>')
+@log("log.txt")
 def list_electronic(Page):
     return render_template(
         'genre.html',
@@ -141,6 +144,7 @@ def list_electronic(Page):
 
 
 @app.route('/SongGraph/<Song>')
+@log("log.txt")
 def graph_song_selected(Song):
     """ Song page with youtube video and graphs """
     A = db.session.query(models.graphs).filter(models.graphs.SongID == Song).all()
@@ -160,6 +164,7 @@ def graph_song_selected(Song):
 
 
 @app.route('/artistSelected/<Artist>')
+@log("log.txt")
 def list_artist_selected(Artist):
     """ Artist Page list all songs by artist """
     return render_template(

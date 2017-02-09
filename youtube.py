@@ -1,17 +1,16 @@
-""" Find youtube URL for song  """
 import urllib
-import urllib2
+import urllib.parse
 from bs4 import BeautifulSoup
-
-
 def youtube_search(Title):
-    text_to_search = Title
-    query = urllib.quote(text_to_search)
+    textToSearch = Title 
+    query = urllib.parse.quote(textToSearch)
     url = "https://www.youtube.com/results?search_query=" + query
-    response = urllib2.urlopen(url)
+    response = urllib.request.urlopen(url)
     html = response.read()
     soup = BeautifulSoup(html, "lxml")
-    vid = soup.findAll(attrs={'class': 'yt-uix-tile-link'})
-    x = vid[0]['href']
-    url = "https://www.youtube.com/embed/" + x[9:] + "?autoplay=1"
+    vid = soup.findAll(attrs={'class':'yt-uix-tile-link'})
+    x= vid[0]['href']
+    url = "https://www.youtube.com/embed/" + x[9:]
+    #vid = 'https://www.youtube.com' + vid[0]['href']
+
     return url
