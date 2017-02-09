@@ -84,8 +84,8 @@ def hello_post2():
             user_query=songpoints(search)
             )
 
-@app.route('/list/<Page>')
 @log("log.txt")
+@app.route('/list/<Page>')
 def list_all(Page):
     """ List top songs """
     max_l = 133*50
@@ -99,8 +99,8 @@ def list_all(Page):
         MaxP=max_l/50+1
         )
 
-@app.route('/list_a/<Page>')
 @log("log.txt")
+@app.route('/list_a/<Page>')
 def list_all_artist(Page):
     """ List top artist """
     max_l = 65 * 50 
@@ -116,8 +116,8 @@ def list_all_artist(Page):
         )
 
 
-@app.route('/<Genre>/<Page>')
 @log("log.txt")
+@app.route('/<Genre>/<Page>')
 def list_genre(Genre, Page):
     """ List top songs by genre """
     max_l = len(songlist.songlist(Genre))
@@ -133,8 +133,8 @@ def list_genre(Genre, Page):
         )
 
 
-@app.route('/electronic/<Page>')
 @log("log.txt")
+@app.route('/electronic/<Page>')
 def list_electronic(Page):
     return render_template(
         'genre.html',
@@ -143,8 +143,8 @@ def list_electronic(Page):
         )
 
 
-@app.route('/SongGraph/<Song>')
 @log("log.txt")
+@app.route('/SongGraph/<Song>')
 def graph_song_selected(Song):
     """ Song page with youtube video and graphs """
     A = db.session.query(models.graphs).filter(models.graphs.SongID == Song).all()
@@ -163,8 +163,8 @@ def graph_song_selected(Song):
         )
 
 
-@app.route('/artistSelected/<Artist>')
 @log("log.txt")
+@app.route('/artistSelected/<Artist>')
 def list_artist_selected(Artist):
     """ Artist Page list all songs by artist """
     return render_template(
