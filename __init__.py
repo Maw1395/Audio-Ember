@@ -12,6 +12,8 @@ import plotly.tools as tls
 #import top5artist_graph
 from mylog import log
 app = Flask(__name__)
+app.config.from_pyfile('./config.py')
+db.init_app(app)
 
 @app.route("/artist", methods=['GET'])
 @log("log.txt")

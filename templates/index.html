@@ -5,11 +5,12 @@
     <title>AudioEmber</title>
  
  
-    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static', filename='bootstrap-3.3.7-dist/css/bootstrap.min.css') }}" >
  
-    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+    <link href="{{url_for('static', filename='bootstrap-3.3.7-dist/css/jumbotron-narrow.css')}}" rel="stylesheet">
  
- 
+    <link rel="stylesheet" href="{{url_for('static', filename='bootstrap-3.3.7-dist/css/bootstrap.min.css') }}" >
+    <link href="{{url_for('static', filename='bootstrap-3.3.7-dist/css/jumbotron-narrow.css')}}" rel="stylesheet">
 </head>
  
 <body>
@@ -75,8 +76,5 @@
             </div>
         </div>
 </body>
-<a href = '/DeleteArtist'>Artist Deletion</a> 
-<br>
-<a href = '/AddArtist'>Artist Insertion</a> 
 </html>
 
