@@ -1,1 +1,1 @@
-pippy install flask flask_sqlalchemy sqlalchemy_migrate billboard.py lxml
+pip install flask flask_sqlalchemy sqlalchemy_migrate billboard.py lxml
