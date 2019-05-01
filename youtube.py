@@ -1,16 +1,15 @@
-import urllib
-import urllib.parse
+import requests
 from bs4 import BeautifulSoup
 def youtube_search(Title):
     textToSearch = Title 
-    query = urllib.parse.quote(textToSearch)
-    url = "https://www.youtube.com/results?search_query=" + query
-    response = urllib.request.urlopen(url)
-    html = response.read()
+    url = "https://www.youtube.com/results?search_query=" + Title
+    html = requests.get(url).text
     soup = BeautifulSoup(html, "lxml")
     vid = soup.findAll(attrs={'class':'yt-uix-tile-link'})
     x= vid[0]['href']
     url = "https://www.youtube.com/embed/" + x[9:]
+   
     #vid = 'https://www.youtube.com' + vid[0]['href']
+    
 
     return url
